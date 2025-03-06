@@ -1,6 +1,5 @@
 "use client";
 import { useState } from "react";
-import jwt_decode from "jwt-decode";
 
 export default function SettingsPage() {
   const [formData, setFormData] = useState({
@@ -16,15 +15,6 @@ export default function SettingsPage() {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    // Handle form submission
-    const token = localStorage.getItem("token");
-    let userId = null;
-    if (token) {
-      const decodedToken = jwt_decode(token);
-      userId = decodedToken.userId;
-    }
-
     if (!userId) {
       alert("User not authenticated.");
       return;
