@@ -28,7 +28,7 @@ export default function Signup() {
   const [confirmPasswordError, setConfirmPasswordError] = useState("");
   const router = useRouter();
 
- const handleSubmit = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     // Reset errors
@@ -46,7 +46,9 @@ export default function Signup() {
     const email = emailRef.current ? emailRef.current.value : "";
     const phone = phoneRef.current ? phoneRef.current.value : "";
     const password = passwordRef.current ? passwordRef.current.value : "";
-    const confirmPassword = confirmPasswordRef.current ? confirmPasswordRef.current.value : "";
+    const confirmPassword = confirmPasswordRef.current
+      ? confirmPasswordRef.current.value
+      : "";
 
     if (!fname) {
       setFnameError("First name is required");
@@ -104,7 +106,10 @@ export default function Signup() {
       toast.success("Signup successful!");
       router.push("/login");
     } catch (error) {
-      if (error?.response?.status === 400 && error?.response?.data?.message === "Email already exists") {
+      if (
+        error?.response?.status === 400 &&
+        error?.response?.data?.message === "Email already exists"
+      ) {
         toast.error("Email already exists");
       } else {
         toast.error("Signup failed: " + error.message);
@@ -116,100 +121,103 @@ export default function Signup() {
   return (
     <>
       <ToastContainer />
-      <div className=" overflow-y-hidden flex items-center justify-center min-h-screen bg-gray-100">
+      <div className="  flex  justify-center h-[100vh] bg-gray-100">
         <div className="flex w-full  bg-white rounded-lg shadow-md overflow-hidden">
-          <div className="w-1/2 p-8">
+          <div className="w-1/2  flex flex-col items-center justify-center ">
             <h2 className="text-2xl mb-2 text-indigo-500">
               Create your Account
             </h2>
             <p className="text-gray-600 mb-6">
               Start connecting with our platform:
             </p>
-            <form
-              className="signup-form w-full flex flex-col justify-center"
-              onSubmit={handleSubmit}
-            >
-              <div className="mb-4">
-                <input
-                  className="shadow appearance-none border rounded w-[50%] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                  id="fname"
-                  type="text"
-                  placeholder="First Name"
-                  ref={fnameRef}
-                />
-                {fnameError && (
-                  <p className="text-red-500 text-xs italic">{fnameError}</p>
-                )}
-              </div>
-              <div className="mb-4">
-                <input
-                  className="shadow appearance-none border rounded w-[50%] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                  id="lname"
-                  type="text"
-                  placeholder="Last Name"
-                  ref={lnameRef}
-                />
-                {lnameError && (
-                  <p className="text-red-500 text-xs italic">{lnameError}</p>
-                )}
-              </div>
-              <div className="mb-4">
-                <input
-                  className="shadow appearance-none border rounded  w-[50%] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                  id="email"
-                  type="email"
-                  placeholder="Email"
-                  ref={emailRef}
-                />
-                {emailError && (
-                  <p className="text-red-500 text-xs italic">{emailError}</p>
-                )}
-              </div>
-              <div className="mb-4">
-                <input
-                  className="shadow appearance-none border rounded  w-[50%] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                  id="phone"
-                  type="tel"
-                  placeholder="Phone Number"
-                  ref={phoneRef}
-                />
-                {phoneError && (
-                  <p className="text-red-500 text-xs italic">{phoneError}</p>
-                )}
-              </div>
-              <div className="mb-4">
-                <input
-                  className="shadow appearance-none border rounded  w-[50%] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                  id="password"
-                  type="password"
-                  placeholder="Password"
-                  ref={passwordRef}
-                />
-                {passwordError && (
-                  <p className="text-red-500 text-xs italic">{passwordError}</p>
-                )}
-              </div>
-              <div className="mb-6">
-                <input
-                  className="shadow appearance-none border rounded  w-[50%] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                  id="confirm-password"
-                  type="password"
-                  placeholder="Confirm Password"
-                  ref={confirmPasswordRef}
-                />
-                {confirmPasswordError && (
-                  <p className="text-red-500 text-xs italic">
-                    {confirmPasswordError}
-                  </p>
-                )}
-              </div>
-              <button
-                className="bg-blue-500 hover:bg-blue-700  w-[50%] text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline "
-                type="submit"
-              >
-                Sign Up
-              </button>
-            </form>
+            <div className="w-[100%] flex justify-center items-center ">
+              <form className="w-full" onSubmit={handleSubmit}>
+                <div className="mb-4 flex justify-center">
+                  <input
+                    className="shadow appearance-none border rounded w-[50%] py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    id="fname"
+                    type="text"
+                    placeholder="First Name"
+                    ref={fnameRef}
+                  />
+                  {fnameError && (
+                    <p className="text-red-500 text-xs italic">{fnameError}</p>
+                  )}
+                </div>
+                <div className="mb-4 flex justify-center">
+                  <input
+                    className="shadow appearance-none border rounded w-[50%] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    id="lname"
+                    type="text"
+                    placeholder="Last Name"
+                    ref={lnameRef}
+                  />
+                  {lnameError && (
+                    <p className="text-red-500 text-xs italic">{lnameError}</p>
+                  )}
+                </div>
+                <div className="mb-4 flex justify-center">
+                  <input
+                    className="shadow appearance-none border rounded  w-[50%] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    id="email"
+                    type="email"
+                    placeholder="Email"
+                    ref={emailRef}
+                  />
+                  {emailError && (
+                    <p className="text-red-500 text-xs italic">{emailError}</p>
+                  )}
+                </div>
+                <div className="mb-4 flex justify-center">
+                  <input
+                    className="shadow appearance-none border rounded  w-[50%] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    id="phone"
+                    type="tel"
+                    placeholder="Phone Number"
+                    ref={phoneRef}
+                  />
+                  {phoneError && (
+                    <p className="text-red-500 text-xs italic">{phoneError}</p>
+                  )}
+                </div>
+                <div className="mb-4 flex justify-center">
+                  <input
+                    className="shadow appearance-none border rounded  w-[50%] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    id="password"
+                    type="password"
+                    placeholder="Password"
+                    ref={passwordRef}
+                  />
+                  {passwordError && (
+                    <p className="text-red-500 text-xs italic">
+                      {passwordError}
+                    </p>
+                  )}
+                </div>
+                <div className="mb-6 flex justify-center">
+                  <input
+                    className="shadow appearance-none border rounded  w-[50%] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    id="confirm-password"
+                    type="password"
+                    placeholder="Confirm Password"
+                    ref={confirmPasswordRef}
+                  />
+                  {confirmPasswordError && (
+                    <p className="text-red-500 text-xs italic">
+                      {confirmPasswordError}
+                    </p>
+                  )}
+                </div>
+                <div className="flex justify-center">
+                  <button
+                    className="bg-blue-500 hover:bg-blue-700  w-[50%] text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline "
+                    type="submit"
+                  >
+                    Sign Up
+                  </button>
+                </div>
+              </form>
+            </div>
             <div className="text-center mt-6">
               Already have an account?{" "}
               <a

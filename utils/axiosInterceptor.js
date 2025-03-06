@@ -1,11 +1,13 @@
-import axios from 'axios';
+import axios from "axios";
 
 // Set up interceptors
 axios.interceptors.request.use(
   (config) => {
-    const token = localStorage.getItem('token');
-    if (token && config.url !== '/api/login' && config.url !== '/api/signup') {
+    const token = localStorage.getItem("token");
+    if (token) {
       config.headers.Authorization = `Bearer ${token}`;
+    } else {
+      window.location.href = "/login";
     }
     return config;
   },

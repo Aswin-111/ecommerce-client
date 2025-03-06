@@ -9,12 +9,11 @@ import "react-toastify/dist/ReactToastify.css";
 export default function Login() {
   const emailRef = useRef(null);
   const passwordRef = useRef(null);
-  const router = useRouter();
 
   useEffect(() => {
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem("token");
     if (token) {
-      router.push("/cart");
+      window.location.href = "/cart";
     }
   }, []);
 
@@ -25,14 +24,17 @@ export default function Login() {
     const password = passwordRef.current?.value;
 
     try {
-      const response = await axios.post(`${process.env.NEXT_PUBLIC_BASE_URL}/login`, {
-        email,
-        password,
-      });
+      const response = await axios.post(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/login`,
+        {
+          email,
+          password,
+        }
+      );
 
-      localStorage.setItem('token', response.data.token);
+      localStorage.setItem("token", response.data.token);
       toast.success("Login successful!");
-      router.push("/cart"); // Redirect to home page after successful login
+      window.location.href = "/cart"; // Redirect to home page after successful login
     } catch (error) {
       toast.error("Invalid credentials");
       console.error("Login failed:", error);
