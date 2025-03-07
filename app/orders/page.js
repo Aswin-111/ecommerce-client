@@ -8,7 +8,7 @@ export default function OrdersPage() {
   useEffect(() => {
     // Fetch orders from backend API
     const fetchOrders = async () => {
-      try {
+      try {  
         const response = await interceptor.get(
           `${process.env.NEXT_PUBLIC_BASE_URL}/users/orders`
         );

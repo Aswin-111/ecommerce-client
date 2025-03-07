@@ -55,11 +55,7 @@ export default function RootLayout({ children }) {
               </Link>
               <div className="flex space-x-4 items-center">
                 <NavItem href="/cart" icon={ShoppingCartIcon} label="Cart" />
-                <NavItem
-                  href="/settings"
-                  icon={Cog6ToothIcon}
-                  label="Settings"
-                />
+
                 <NavItem
                   href="/orders"
                   icon={ClipboardDocumentListIcon}

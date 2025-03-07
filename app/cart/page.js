@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 
 export default function Cart() {
   const [cartItems, setCartItems] = useState([]);
+  const [cartToggle, setCartToggle] = useState(false);
   const router = useRouter();
 
   const handleCheckout = async () => {
@@ -26,7 +27,7 @@ export default function Cart() {
     };
 
     fetchCartItems();
-  }, [cartItems]);
+  }, [cartToggle]);
 
   const handleQuantityChange = (productId, newQuantity) => {
     if (newQuantity < 1) return; // Prevent negative quantities
@@ -50,6 +51,8 @@ export default function Cart() {
       setCartItems((prevItems) =>
         prevItems.filter((item) => item.product._id !== productId)
       );
+
+      setCartToggle(!cartToggle);
       console.log("done");
     } catch (err) {
       console.log(err);
