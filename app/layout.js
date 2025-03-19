@@ -61,8 +61,15 @@ export default function RootLayout({ children }) {
                   icon={ClipboardDocumentListIcon}
                   label="Orders"
                 />
+
                 <NavItem
-                  href="/logout"
+                  href="/settings"
+                  icon={Cog6ToothIcon}
+                  label="Settings"
+                  // onClick={handleLogout}
+                />
+                <NavItem
+                  href="/login"
                   icon={ArrowRightOnRectangleIcon}
                   label="Logout"
                   onClick={handleLogout}
