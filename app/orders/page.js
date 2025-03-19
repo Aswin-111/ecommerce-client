@@ -84,7 +84,7 @@ export default function OrdersPage() {
                 {order.total}
               </td>
               <td style={{ padding: "10px", border: "1px solid #ddd" }}>
-                {new Date(order.date).toLocaleDateString()}
+                {order?.date}
               </td>
             </tr>
           ))}
